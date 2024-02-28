@@ -1,7 +1,12 @@
 const fs = require("fs");
 const { readFile } = require("fs/promises");
 
-//Function for counting characters in given filecontent
+/**
+ * Count the number of words in a given text, filtering out special characters.
+ *
+ * @param {string} text - The text to count words in.
+ * @returns {number} The number of words in the text.
+ **/
 function countWords(str) {
   //Split the words based on whitespaces/tabs/newlines
   let words = str.split(/\s+/);
@@ -12,7 +17,11 @@ function countWords(str) {
   return filtered.length;
 }
 
-// Read given file
+/**
+ * Read the file asynchronously through the given filepath, call the count function and display result
+ * @param {string} filepath - The path to the file to read
+ * @returns {Promise<void>} Promise resolved
+ * */
 async function readThisFile(filePath) {
   try {
     const data = await readFile(filePath);
@@ -34,7 +43,12 @@ async function readThisFile(filePath) {
     }
   }
 }
-//Read and Parse json config
+
+/**
+ * Read the file asynchronously through the given filepath, parse JSON data and call readThis async function for each
+ * @param {string} configFilePath - The path to the file to read
+ * @returns {Promise<void>} Promise resolved
+ * */
 async function readConfigFile(configFilePath) {
   try {
     const configData = await readFile(configFilePath);
